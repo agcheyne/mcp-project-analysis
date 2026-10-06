@@ -29,10 +29,10 @@ Put these in `data/`:
 * the digitiser calibration `calib_0049_5G.dat` (already included)
 
 The `0049` is the serial number of the V1742 digitiser. Each run records the serial it was taken
-with (`run.values(921)`), and the matching calibrations are kept on the DAQ machine in
+with as a "packet" (`run.values(921)`), and the matching calibrations are kept on the DAQ machine in
 `/scratch2/data/v1742.db/`.
 
-Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 5000` in the notebook
+Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 1000` in the notebook
 before reading a whole file.
 
 ## Using the `hpdirc` module
@@ -41,6 +41,7 @@ before reading a whole file.
 import hpdirc
 run = hpdirc.Run("data/test-00000068-0000.evt", calib="data/calib_0049_5G.dat")
 
+# access other packet information
 print(run.hv())        # HV settings/readback at the start of the run
 print(run.motor())     # motor x/y position
 
@@ -57,17 +58,10 @@ What it does for you:
 * applies the DRS4 calibration (per-cell offsets and the per-cell time axis);
 * removes the DRS4 "spikes": 1-2 sample glitches that show up at the same sample in the
   channels of one group (the same algorithm as the `glasgow` pmonitor code on the DAQ
-  machine). `hpdirc.Run(..., despike=False)` turns this off;
+  machine). `hpdirc.Run(..., despike=False)` turns this off if you want to see its effect;
 * stores the begin-run information (setup script, digitiser info, motor, HV), which you can
   read with `run.text(<packet id>)`.
 
-## For the instructor
-
-* `.devcontainer/Dockerfile` builds ROOT 6.32 with the **ePIC** branch of
-  [online_distribution](https://github.com/sPHENIX-Collaboration/online_distribution),
-  the branch the DAQ machine uses. `master` is stale and lacks the current V1742 decoder.
-  To pin a specific commit, change `ONLINE_DISTRIBUTION_REF`.
-* To hand it out, zip this folder (without large data), or put it in a git repository.
-  The data can go on a shared drive or USB stick.
+## Other datamanagement info
 * `prdfsplit` (in the container, and on the DAQ machine) can cut a large `.evt` file into
   smaller pieces.
