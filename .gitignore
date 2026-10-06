@@ -1,0 +1,5 @@
+data/*.evt
+!data/test-00000068-0000.evt
+*.csv
+.ipynb_checkpoints/
+__pycache__/
