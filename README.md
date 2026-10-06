@@ -18,6 +18,8 @@ pandas and matplotlib.
 5. *File > Open Folder...* and pick this folder. VS Code asks **"Reopen in Container"**: click it.
    (Or press F1 and run *Dev Containers: Reopen in Container*.)
    The first time takes ~10 minutes while it builds; after that it opens in seconds.
+   (if you still can't see it, from the target folder run:
+   `docker build --file .devcontainer\Dockerfile --tag hpdirc-analysis:devcontainer .`)
 6. Open `starter.ipynb`. If VS Code asks for a kernel, pick **Python 3 (/usr/bin/python3)**.
    Run the cells with Shift+Enter.
 
