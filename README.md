@@ -18,8 +18,6 @@ pandas and matplotlib.
 5. *File > Open Folder...* and pick this folder. VS Code asks **"Reopen in Container"**: click it.
    (Or press F1 and run *Dev Containers: Reopen in Container*.)
    The first time takes ~10 minutes while it builds; after that it opens in seconds.
-   (if you still can't see it, from the target folder run:
-   `docker build --file .devcontainer\Dockerfile --tag hpdirc-analysis:devcontainer .`)
 6. Open `starter.ipynb`. If VS Code asks for a kernel, pick **Python 3 (/usr/bin/python3)**.
    Run the cells with Shift+Enter.
 
@@ -35,7 +33,7 @@ with as a "packet" (`run.values(921)`), and the matching calibrations are kept o
 `/scratch2/data/v1742.db/`.
 
 Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 1000` in the notebook
-before reading a whole file.
+before reading a whole file. It might be wise to not run in a notebook once you have your code developed.
 
 ## Using the `hpdirc` module
 

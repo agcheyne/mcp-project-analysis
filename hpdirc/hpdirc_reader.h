@@ -166,10 +166,10 @@ public:
   }
 
 private:
-  // CAEN's second correction (wavedump CORRECTION_LEVEL bit 1): a pedestal per sample
-  // *position* in the readout window. caen_correction reads these columns but discards
-  // them, so we read them here. File layout per chip: 1024 lines of
-  //   index  cell[0..8]  time  nsample[0..8]
+  // CAEN's second correction (wavedump CORRECTION_LEVEL bit 1): 
+  // a pedestal per sample *position* in the readout window. 
+  // The caen_correction reads these columns but discards them, so we read them here. 
+  // File layout per chip: 1024 lines of index  cell[0..8]  time  nsample[0..8]
   void read_nsample(const char *calibfile)
   {
     std::ifstream in(calibfile);
