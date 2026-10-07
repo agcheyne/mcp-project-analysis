@@ -9,7 +9,7 @@ pandas and matplotlib.
 
 1. Install **VS Code**: https://code.visualstudio.com
 2. Install **Docker Desktop**: https://www.docker.com/products/docker-desktop and start it.
-   * Windows: accept the WSL 2 option when it asks.
+   * Windows: accept the WSL 2 option when it asks. Enable Ubuntu under Docker Desktop > Settings > Resources > WSL Integration.
    * Mac with Apple silicon (M1/M2/M3/...): When prompted, use **"Use Rosetta for x86_64/amd64 emulation"**.
 3. In VS Code, install the **Dev Containers** extension (Extensions panel, search "Dev Containers").
 4. Fork your own version of this github and clone it (Can be done in vscode, or via `git clone https://github.com/<github-username>/mcp-project-analysis.git` ) 
@@ -18,18 +18,18 @@ pandas and matplotlib.
    The first time takes ~10 minutes while it builds; after that it opens in seconds.
 6. Open `starter.ipynb`. If VS Code asks for a kernel, pick **Python 3 (/usr/bin/python3)**.
 
+**Note:** if any step doesn't work, try closing and reopening Docker Desktop and VS Code.
+
 ## Data
 
-Put these in `data/`:
-
-* the run files, e.g. `test-00000068-0000.evt`
-* the digitiser calibration `calib_0049_5G.dat` (already included)
+`data/` already contains a small example run (`test-00000068-0000.evt`, 727 events) and the
+digitiser calibration `calib_0049_5G.dat`. Put any other run files you are given there too.
 
 The `0049` is the serial number of the V1742 digitiser. Each run records the serial it was taken
 with as a "packet" (`run.values(921)`), and the matching calibrations are kept on the DAQ machine in
 `/scratch2/data/v1742.db/`.
 
-Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 1000` in the notebook
+Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 5000` (the notebook default)
 before reading a whole file. It might be wise to not run in a notebook once you have your code developed.
 
 ## Using the `hpdirc` module
