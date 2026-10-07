@@ -10,9 +10,12 @@ pandas and matplotlib.
 1. Install **VS Code**: https://code.visualstudio.com
 2. Install **Docker Desktop**: https://www.docker.com/products/docker-desktop and start it.
    * Windows: accept the WSL 2 option when it asks. Enable Ubuntu under Docker Desktop > Settings > Resources > WSL Integration.
-     If Docker later says *permission denied*, your Windows user must be in the **docker-users**
-     group: run `net localgroup docker-users <your-windows-username> /add` in an
-     *Administrator* PowerShell, then sign out of Windows and back in.
+     If Docker later says *permission denied*, your user needs to be in the Docker group:
+     * on Windows: run `net localgroup docker-users <your-windows-username> /add` in an
+       *Administrator* PowerShell, then sign out of Windows and back in;
+     * in the Ubuntu (WSL) terminal, or on a Linux laptop: run
+       `sudo usermod -aG docker $USER` and then `newgrp docker`
+       (`newgrp` only fixes that one terminal; log out and in again to make it permanent).
    * Mac with Apple silicon (M1/M2/M3/...): When prompted, use **"Use Rosetta for x86_64/amd64 emulation"**.
 3. In VS Code, install the **Dev Containers** extension (Extensions panel, search "Dev Containers").
 4. Fork your own version of this github and clone it into an ordinary folder (e.g. `Documents`,
