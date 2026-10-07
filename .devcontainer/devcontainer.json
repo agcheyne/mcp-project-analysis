@@ -10,12 +10,16 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/bin/python3",
-        "jupyter.notebookFileRoot": "${workspaceFolder}"
+        "jupyter.notebookFileRoot": "${workspaceFolder}",
+        "python.terminal.activateEnvironment": false
       }
     }
   },
-  "postCreateCommand": "cat /opt/online/VERSION && python3 -c 'import hpdirc; hpdirc._setup(); print(\"hpdirc OK\")'"
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && cat /opt/online/VERSION && python3 -c 'import hpdirc; hpdirc._setup(); print(\"hpdirc OK\")'"
 }

@@ -1,0 +1,5 @@
+# keep Unix line endings for everything that runs inside the Linux container,
+# even when the repo is edited on Windows
+* text=auto eol=lf
+*.evt binary
+*.dat -text

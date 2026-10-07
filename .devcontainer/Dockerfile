@@ -9,7 +9,7 @@ RUN apt-get -o APT::Sandbox::User=root update \
     && DEBIAN_FRONTEND=noninteractive apt-get -o APT::Sandbox::User=root install -y --no-install-recommends \
         git autoconf automake libtool make g++ pkg-config \
         zlib1g-dev liblzo2-dev libbz2-dev libboost-dev \
-        python3-numpy python3-matplotlib python3-pandas python3-scipy python3-ipykernel \
+        python3-numpy python3-matplotlib python3-pandas python3-scipy python3-ipykernel python-is-python3 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV ONLINE_MAIN=/opt/online
@@ -30,3 +30,11 @@ RUN mkdir -p /tmp/build/pmonitor && cd /tmp/build/pmonitor \
     && make -j"$(nproc)" install \
     && cp /tmp/od/VERSION ${ONLINE_MAIN}/VERSION \
     && rm -rf /tmp/od /tmp/build
+
+# A Jupyter kernel with the ROOT / Event-library environment baked in, so notebooks work
+# without relying on VS Code's Python-environment activation.
+RUN python3 -m ipykernel install --prefix /usr/local --name hpdirc --display-name "hpDIRC (Python 3 + ROOT)" \
+    && python3 -c "import json; p='/usr/local/share/jupyter/kernels/hpdirc/kernel.json'; k=json.load(open(p)); \
+k['env']={'ROOTSYS':'/opt/root','PYTHONPATH':'/opt/root/lib','CLING_STANDARD_PCH':'none', \
+'ONLINE_MAIN':'/opt/online','LD_LIBRARY_PATH':'/opt/online/lib', \
+'ROOT_INCLUDE_PATH':'/opt/online/include:/opt/online/include/Event'}; json.dump(k,open(p,'w'),indent=1)"
