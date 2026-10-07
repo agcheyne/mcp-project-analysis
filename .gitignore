@@ -3,3 +3,4 @@ data/*.evt
 *.csv
 .ipynb_checkpoints/
 __pycache__/
+*.html

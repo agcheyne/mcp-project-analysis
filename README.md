@@ -12,7 +12,7 @@ pandas and matplotlib.
    * Windows: accept the WSL 2 option when it asks.
    * Mac with Apple silicon (M1/M2/M3/...): When prompted, use **"Use Rosetta for x86_64/amd64 emulation"**.
 3. In VS Code, install the **Dev Containers** extension (Extensions panel, search "Dev Containers").
-4. If you have not done so, fork your own version of this github and clone it (Can be done in vscode, or via `git clone https://github.com/<github-username>/mcp-project-analysis.git` ) 
+4. Fork your own version of this github and clone it (Can be done in vscode, or via `git clone https://github.com/<github-username>/mcp-project-analysis.git` ) 
 5. *File > Open Folder...* and pick this folder. VS Code will ask **"Reopen in Container"**: click it.
    (Or press F1 and run *Dev Containers: Reopen in Container*.)
    The first time takes ~10 minutes while it builds; after that it opens in seconds.
@@ -30,7 +30,7 @@ with as a "packet" (`run.values(921)`), and the matching calibrations are kept o
 `/scratch2/data/v1742.db/`.
 
 Files are big (hundreds of MB to several GB). Start with `N_EVENTS = 1000` in the notebook
-before reading a whole file.
+before reading a whole file. It might be wise to not run in a notebook once you have your code developed.
 
 ## Using the `hpdirc` module
 

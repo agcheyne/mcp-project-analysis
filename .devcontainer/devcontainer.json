@@ -1,7 +1,13 @@
 {
   "name": "hpDIRC analysis",
-  "build": { "dockerfile": "Dockerfile" },
-  "remoteEnv": { "PYTHONPATH": "${containerWorkspaceFolder}:${containerEnv:PYTHONPATH}" },
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteEnv": {
+    "PYTHONPATH": "${containerWorkspaceFolder}:/opt/root/lib:${containerEnv:PYTHONPATH}",
+    "LD_LIBRARY_PATH": "/opt/online/lib:${containerEnv:LD_LIBRARY_PATH}"
+  },
   "customizations": {
     "vscode": {
       "extensions": ["ms-python.python", "ms-toolsai.jupyter"],
