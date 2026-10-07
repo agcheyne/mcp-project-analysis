@@ -10,16 +10,13 @@ pandas and matplotlib.
 1. Install **VS Code**: https://code.visualstudio.com
 2. Install **Docker Desktop**: https://www.docker.com/products/docker-desktop and start it.
    * Windows: accept the WSL 2 option when it asks.
-   * Mac with Apple silicon (M1/M2/M3/...): in Docker Desktop, *Settings > General*, tick
-     **"Use Rosetta for x86_64/amd64 emulation"**. The environment runs under emulation,
-     so it is slower than on an Intel/AMD machine.
+   * Mac with Apple silicon (M1/M2/M3/...): When prompted, use **"Use Rosetta for x86_64/amd64 emulation"**.
 3. In VS Code, install the **Dev Containers** extension (Extensions panel, search "Dev Containers").
-4. Put the data files in the `data/` folder of this kit (see below).
-5. *File > Open Folder...* and pick this folder. VS Code asks **"Reopen in Container"**: click it.
+4. If you have not done so, fork your own version of this github and clone it (Can be done in vscode, or via `git clone https://github.com/<github-username>/mcp-project-analysis.git` ) 
+5. *File > Open Folder...* and pick this folder. VS Code will ask **"Reopen in Container"**: click it.
    (Or press F1 and run *Dev Containers: Reopen in Container*.)
    The first time takes ~10 minutes while it builds; after that it opens in seconds.
 6. Open `starter.ipynb`. If VS Code asks for a kernel, pick **Python 3 (/usr/bin/python3)**.
-   Run the cells with Shift+Enter.
 
 ## Data
 
